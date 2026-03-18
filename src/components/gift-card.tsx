@@ -19,18 +19,18 @@ export function GiftCard({ article }: GiftCardProps) {
       <p className="mt-3 text-sm leading-6 text-stone-600">{article.description}</p>
       <dl className="mt-4 grid grid-cols-2 gap-3 text-sm text-stone-500">
         <div>
-          <dt className="font-medium text-stone-700">Recipient</dt>
+          <dt className="font-medium text-stone-700">대상</dt>
           <dd>{article.recipient}</dd>
         </div>
         <div>
-          <dt className="font-medium text-stone-700">Budget</dt>
+          <dt className="font-medium text-stone-700">예산</dt>
           <dd>{article.budget}</dd>
         </div>
       </dl>
       <div className="mt-6 flex items-center justify-between text-sm text-stone-500">
         <span>{article.readingTime}</span>
         <Link href={`/gifts/${article.slug}`} className="font-medium text-stone-900 hover:text-amber-700">
-          Read guide
+          자세히 보기
         </Link>
       </div>
     </article>

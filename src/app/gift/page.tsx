@@ -14,7 +14,7 @@ export async function generateMetadata({ searchParams }: GiftPageProps): Promise
 
   if (!article) {
     return {
-      title: "Gift Article Not Found",
+      title: "선물 글을 찾을 수 없습니다",
     };
   }
 
@@ -45,15 +45,15 @@ export default async function GiftPage({ searchParams }: GiftPageProps) {
           <p className="mt-5 text-lg leading-8 text-stone-600">{article.description}</p>
           <dl className="mt-6 flex flex-wrap gap-4 text-sm text-stone-500">
             <div>
-              <dt className="font-medium text-stone-800">Recipient</dt>
+              <dt className="font-medium text-stone-800">대상</dt>
               <dd>{article.recipient}</dd>
             </div>
             <div>
-              <dt className="font-medium text-stone-800">Budget</dt>
+              <dt className="font-medium text-stone-800">예산</dt>
               <dd>{article.budget}</dd>
             </div>
             <div>
-              <dt className="font-medium text-stone-800">Published</dt>
+              <dt className="font-medium text-stone-800">발행일</dt>
               <dd>{article.publishedAt}</dd>
             </div>
           </dl>
@@ -66,7 +66,7 @@ export default async function GiftPage({ searchParams }: GiftPageProps) {
 
         <section aria-labelledby="gift-ideas" className="border-t border-stone-200 py-8">
           <h2 id="gift-ideas" className="text-2xl font-semibold tracking-tight text-stone-900">
-            Recommended gift ideas
+            추천 선물 아이디어
           </h2>
           <div className="mt-6 space-y-4">
             {article.ideas.map((idea, index) => (
@@ -82,16 +82,11 @@ export default async function GiftPage({ searchParams }: GiftPageProps) {
 
         <section aria-labelledby="gift-tips" className="border-t border-stone-200 py-8">
           <h2 id="gift-tips" className="text-2xl font-semibold tracking-tight text-stone-900">
-            Quick tips before you buy
+            고르기 전에 체크할 팁
           </h2>
-          <ul className="mt-5 space-y-3 text-base leading-7 text-stone-600">
+          <ul className="mt-5 list-disc space-y-3 pl-5 text-base leading-7 text-stone-600 marker:text-amber-700">
             {article.tips.map((tip) => (
-              <li
-                key={tip}
-                className="rounded-2xl bg-white pl-6 before:relative before:left-[-0.8rem] before:text-amber-700 before:content-['•']"
-              >
-                {tip}
-              </li>
+              <li key={tip}>{tip}</li>
             ))}
           </ul>
         </section>
