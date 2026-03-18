@@ -1,32 +1,12 @@
-import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getGiftArticle } from "@/data/gifts";
 
-type GiftPageProps = {
-  searchParams: Promise<{
-    slug?: string;
-  }>;
+type GiftDetailPageProps = {
+  slug: string;
 };
 
-export async function generateMetadata({ searchParams }: GiftPageProps): Promise<Metadata> {
-  const { slug } = await searchParams;
-  const article = slug ? getGiftArticle(slug) : undefined;
-
-  if (!article) {
-    return {
-      title: "선물 글을 찾을 수 없습니다",
-    };
-  }
-
-  return {
-    title: article.title,
-    description: article.description,
-  };
-}
-
-export default async function GiftPage({ searchParams }: GiftPageProps) {
-  const { slug } = await searchParams;
-  const article = slug ? getGiftArticle(slug) : undefined;
+export function GiftDetailPage({ slug }: GiftDetailPageProps) {
+  const article = getGiftArticle(slug);
 
   if (!article) {
     notFound();
